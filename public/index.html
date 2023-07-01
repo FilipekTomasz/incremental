@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header id="header"><div id="tabs-container"></div><div class="tabs" id="reset">Hard reset</div></header>
+    <div class="container">
+        <div class="tab-left">
+            <div id="statsContainer">
+                <p class="stats" id="bodyCounter"></p>
+                <p class="stats" id="mindCounter"></p>
+                <p class="stats" id="charismaCounter"></p>
+            </div>
+            <p id="rankCounter"><!--Rank--></p>
+            <p id="goldCounter">Gold: 0</p>
+            <p id="knowledgeCounter"><!--Knowledge--></p>
+            <div id="barsContainer">
+                <!-- <p id="manaCounter">Mana</p> -->
+                <div class="progress-bar" id="manaBar">
+                    <div class="progress" id="manaProgress"></div>
+                    <p class="progressText"></p>
+                    <span class="tooltip">Mana</span>
+                </div>
+                <div class="progress-bar" id="bloodBar">
+                    <div class="progress" id="bloodProgress"></div>
+                    <p class="progressText"></p>
+                    <span class="tooltip">Blood</span>
+                </div>
+            </div>
+        </div>
+        <div class="tab-middle">
+                <div class="tab-container" id="mainTab">
+                    <div class="actions-container" id="actionsContainer"></div>
+                </div>
+                <div class="tab-container" id="skillsTab">
+                    <div class="tab-left-skills">
+                        <!-- <div class="skill" id="skill1">
+                            <div class="tooltip">Skill1</div>
+                        </div>
+                        <div class="skill" id="skill2">
+                            <div class="tooltip">Skill2</div>
+                        </div>
+                        <div class="skill" id="skill3">
+                            <div class="tooltip">Skill3</div>
+                        </div>
+                        <div class="skill" id="skill4">
+                            <div class="tooltip">Skill4</div>
+                        </div> -->
+            
+                    </div>
+            </div>
+            <div class="tab-container" id="mapTab">
+                <canvas id="mapCanvas" width="500px" height="500px"></canvas>
+            </div>
+        </div>
+        <div class="tab-right">
+            <div id="upgrade-container">
+                
+            </div>
+        </div>
+    </div>
+  
+    </div>
+
+
+    <script src="../dist/main.js"></script>
+</body>
+</html>

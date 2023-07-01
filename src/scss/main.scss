@@ -1,0 +1,239 @@
+$defaultMargin: 4px;  
+  p,h3{
+    margin: 4px;
+  }
+  .progress-bar {
+    width:95%;
+    min-height: 20px;
+    background-color: #f2f2f2;
+    position: relative;
+    border: solid black 1px;
+    display:none;
+    margin-bottom: $defaultMargin;
+  }
+   
+  .progress {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    margin: 0;
+  }
+
+  #manaProgress{
+    background-color: lightblue;
+  }
+
+
+  .progress-action {
+    height: 100%;
+    background-color: #4caf50;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    margin: 0;
+  }
+  #upgrade-container {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .upgrade{
+    border: solid black 1px;
+    position: relative;
+    margin: $defaultMargin;
+  }
+
+  .tab-container{
+    display: none;
+    flex-direction: row;
+    margin-top: $defaultMargin;
+  }
+  .tab-left{
+    width:15%;
+    padding-right: 10px;
+  }
+  .tab-right{
+    border: solid black 3px;
+    width:40%;
+    background-color: lightgray;
+    padding:0;
+  }
+  .tab-middle{
+    width:40%;
+    padding:0;
+  }
+  
+  .actions-container{
+    width:100%;
+  }
+
+  .action{
+    min-height: 40px;
+    background-color: #f2f2f2;
+    border: solid black 1px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: $defaultMargin;
+  }
+  
+  .action h3{
+    z-index: 1;
+  }
+  
+  header{
+    background-color: azure;
+    border: solid black 1px;
+    display:flex;
+    flex-direction: row;
+    
+  }
+  #tabs-container{
+    @extend header;
+    border: none;
+  }
+  .tabs{
+    background-color: lightgray;
+    border:solid grey 1px;
+    margin: $defaultMargin;
+    padding:2px;
+  }
+  
+  #skillsTab{
+    background-color: bisque;
+    min-width: 200px;
+    min-height: 600px;
+  }
+  
+  .tooltip {
+    visibility: hidden;
+    width: 180px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 5;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -90px; 
+  }
+  
+  .progressText{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .upgrade:hover .tooltip {
+    visibility: visible;
+  }
+  .action:hover .tooltip {
+    visibility: visible;
+  }
+  .skill:hover .tooltip {
+    visibility: visible;
+  }
+  #manaBar:hover .tooltip {
+    visibility: visible;
+  }
+  #bloodBar:hover .tooltip {
+    visibility: visible;
+  }
+
+  .tab-left-skills{
+    width: 50%;
+    border: solid black 1px;
+    position: relative;
+  }
+
+  .skill{
+    border-radius: 50%;
+    border: solid black 2px;
+    background:lightgreen;
+    width: 25px;
+    height: 25px;
+  }
+  #skill0{
+    position:absolute;
+    bottom:0px;
+    right:25%;
+    left:50%;
+    margin-left:-13px
+  }
+  #skill1{
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    bottom:45px;
+    right:25%;
+    left:50%;
+    margin-left:-25px
+    
+    
+  }
+  #skill2{
+    position:absolute;
+    bottom:100px;
+    right:30%;
+    left:45%;
+    margin-left:-13px
+    
+    
+  }
+  #skill3{
+    position:absolute;
+    bottom:100px;
+    right:10%;
+    left:55%;
+    margin-left:-13px
+    
+  }
+
+
+  #manaCounter{
+    text-align: center;
+  }
+
+  .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: $defaultMargin;
+  }
+
+
+  .block{
+    display:block;
+  }
+
+  #reset{
+    margin-left: auto;
+    background-color: lightcoral;
+  }
+
+
+  #mapTab{
+    background-color: gray;
+  }
+
+  #bodyCounter{
+    color: #e07431;
+  }
+  #mindCounter{
+    color: #3eb0c9;
+  }
+  #charismaCounter{
+    color: #cf70c2;
+  }
+
+  #bloodProgress{
+    background-color: #d12a46;
+  }
