@@ -10,6 +10,8 @@ let lastRender = 0;
 
 let reset = document.getElementById("reset");
 reset.onclick = hardReset;
+let cheat = document.getElementById("cheat");
+cheat.onclick = maxRes;
 
 function update(progress) {
     // Update the state of the world for the elapsed time since last render
@@ -87,7 +89,11 @@ function saveGame(){
   const resourecsArr = Object.values(Resources);
   resourecsArr.forEach(r => {
     let index = s.resources.findIndex(i => i.name == r.name);
-    if(index != null){
+    if(index != -1){
+      console.log(r);
+      console.log(s)
+      console.log(index)
+      console.log(s.resources[index])
       s.resources[index].amount = r.amount
     }
 
@@ -184,6 +190,17 @@ function initState(){
     let index = State.resources.findIndex(i => i.name == r.name);
     if(index == -1){
       State.resources.push({name: r.name, amount: r.amount});
+    }
+  })
+}
+
+function maxRes(){
+  const resourecsArr = Object.values(Resources);
+  resourecsArr.forEach(s => {
+    if(s.cap != "nocap"){
+      s.amount = s.cap;
+    } else {
+      s.amount *= 2;
     }
   })
 }

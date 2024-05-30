@@ -1,4 +1,5 @@
 import {Resources, Timers, gainGold, gainKnowledge, gainEffects, Stats, State} from "./data.js";
+import { createBoughtTilePopup } from "./popup.js";
 
 function saveActionsUsed(action){
     //Save the number of times this action was used
@@ -273,7 +274,7 @@ const Upgrades = {
     },
     Orb: {
         id: 17,
-        cost: [{type: Resources.Mana, amount: 50},{type: Resources.Gold, amount: 50} ],
+        cost:[{type: Resources.Gold, amount: 50}],
         name: "Orb",
         description: "Base mana gain is increased by 1",
         visible: false,
@@ -283,7 +284,7 @@ const Upgrades = {
             Timers.Mana.effectValue += 1;
         },
         requirement: () =>{
-            return Skills.MoreMagic.bought;
+            return Skills.Magic.bought;
         }
     },
     DeepMeditation: {
@@ -447,6 +448,21 @@ const Upgrades = {
             return Upgrades.UnlockBlood.bought;
         }
     },
+    BigOrb: {
+        id: 28,
+        cost: [{type: Resources.Mana, amount: 30},{type: Resources.Gold, amount: 80} ],
+        name: "Big Orb",
+        description: "Base mana gain is increased by 1",
+        visible: false,
+        bought: false,
+        tabName: "Actions",
+        effect: () =>{
+            Timers.Mana.effectValue += 1;
+        },
+        requirement: () =>{
+            return Skills.MoreMagic.bought && Upgrades.Orb.bought;
+        }
+    },
 }
 const Actions = {
     Beg: {
@@ -587,27 +603,28 @@ const Tiles = {
     Village:{
         id: 0,
         name: "Village",
-        description: "Simple village",
-        costDescription: "",
+        description: "Starting point of an adventure",
         visible: false,
         bought: true,
         sprite: "",
+        color: "#6ac482", // if no sprite
         pos: {x:0,y:0},
         effect() {
             //None
         },
         requirement: () =>{
-            return Skills.Magic.bought;
+            //none
         },
         buyOptions: [],
     },
     Tower:{
         id: 1,
         name: "Mysterious tower",
-        description: "Looks like an abodoned tower",
+        description: "Looks like an abandoned tower",
         visible: false,
         bought: false,
         sprite: "",
+        color: "#6ac482", // if no sprite
         pos: {x:0,y:1},
         effect() {
             //None
@@ -617,16 +634,26 @@ const Tiles = {
         },
         buyOptions: [
             {
-                name: "Locpick the door",
-                description: "Requires Pick and 3 agi",
+                name: "Buy and locpick the door",
+                description: "Costs 60 gold",
                 buy(){
-
+                    console.log("lockpick")
+                    if(Resources.Gold.amount >= 60){
+                        Tiles.Tower.bought = true;
+                        createBoughtTilePopup("You lockpick the door", "You enter and look around, after a while you find a spellbook", "<h2>Spells unlocked</h2>");
+                        Resources.Gold.amount -= 60;
+                    }
                 },
             },
             {
-                name: "Disenchant the door",
-                description: "Requires 100 mana and 20 knowledge",
+                name: "Force the door open",
+                description: "Requires  5 body",
                 buy(){
+                    console.log("force")
+                    if(Stats.Body.amount >= 5){
+                        Tiles.Tower.bought = true;
+                        createBoughtTilePopup("You force open the door", "You enter and look around, after a while you find a spellbook", "<h2>Spells unlocked</h2>");
+                    }
 
                 },
             },
@@ -636,10 +663,10 @@ const Tiles = {
         id: 2,
         name: "Forest",
         description: "Forest",
-        costDescription: "",
         visible: false,
         bought: false,
         sprite: "",
+        color: "#6ac482", // if no sprite
         pos: {x:1,y:0},
         effect() {
             //None
@@ -647,9 +674,7 @@ const Tiles = {
         requirement: () =>{
             return Tiles.Village.bought;
         },
-        buy(){
-            this.bought = true;
-        }
+        buyOptions: []
     },
 
    
@@ -661,4 +686,4 @@ gainEffects.knowledge = [Skills.Knowledgeable];
 gainEffects.blood = [];
 
 
-export {Upgrades, Actions, Skills};
+export {Upgrades, Actions, Skills, Tiles};

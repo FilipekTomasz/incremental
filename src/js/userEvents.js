@@ -1,6 +1,10 @@
 import { Resources, State } from "./data";
 import { Actions, Skills, Upgrades } from "./upgrades";
 
+const closePopup = document.getElementById("closePopup");
+closePopup.onclick = () =>{
+  closePopup.parentElement.style.visibility = "hidden";
+}
 
 
 

@@ -139,19 +139,21 @@ function drawActions(){
         
         const tooltip = document.createElement("span");
         tooltip.classList.add("tooltip");
-        tooltip.innerHTML = action.description;
-        
+        if(typeof action.description == 'function'){
+          tooltip.innerHTML = action.description();
+        } else {
+          tooltip.innerHTML = action.description;
+        }
         
         act.appendChild(tooltip)
-  
-    }
-    if(typeof action.description == 'function'){
+    } else if(typeof action.description == 'function' && action.visible){
       const div = document.querySelector(`[data-id="action${action.id}"]`);
-      const tooltip = div.querySelector(':scope > .tooltip');
-      if(action.description() != tooltip.innerHTML){
-        tooltip.innerHTML = action.description();
+      const tooltipp = div.querySelector(':scope > .tooltip');
+      if(action.description() != tooltipp.innerHTML){
+        tooltipp.innerHTML = action.description();
       } 
     }
+    
   })
 }
 
@@ -328,6 +330,7 @@ function changeTab(tabName){
     tab.container.style.display = "flex";
     currentTab = tab;
     changedTab = true;
+    document.getElementById("popup").style.visibility = "hidden";
     deleteUpgrades();
   }
   

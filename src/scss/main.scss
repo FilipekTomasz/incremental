@@ -147,6 +147,9 @@ $defaultMargin: 4px;
   #bloodBar:hover .tooltip {
     visibility: visible;
   }
+  .tileBuy:hover .tooltip {
+    visibility: visible;
+  }
 
   .tab-left-skills{
     width: 50%;
@@ -221,7 +224,7 @@ $defaultMargin: 4px;
 
 
   #mapTab{
-    background-color: gray;
+    background-color: lightblue;
   }
 
   #bodyCounter{
@@ -237,3 +240,32 @@ $defaultMargin: 4px;
   #bloodProgress{
     background-color: #d12a46;
   }
+
+
+  #popup {
+    visibility: hidden;
+    position:absolute;  
+    top:50%;  
+    left:50%;  
+    margin:-100px 0 0 -200px;  
+    width:400px;  
+    height:200px;  
+    border:1px solid black;
+    background-color: lightgray;
+    display:flex;
+    flex-direction: column;
+    z-index: 1;
+    }  
+
+
+#closePopup {
+ align-self: flex-end;
+ height: 40px;
+ width:40px;
+ background-color: lightcoral;
+}
+
+.tileBuy{
+  border: 1px solid black;
+  background-color: #f2f2f2;
+}
